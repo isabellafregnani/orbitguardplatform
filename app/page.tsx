@@ -3,6 +3,7 @@ import { Footer } from '@/components/footer'
 import { StarsBackground } from '@/components/stars-background'
 import { HeroSection } from '@/components/landing/hero-section'
 import { AboutSection } from '@/components/landing/about-section'
+import { NasaCard } from '@/components/nasa-card'
 import { FeaturesSection } from '@/components/landing/features-section'
 import { TechnologiesSection } from '@/components/landing/technologies-section'
 import { CTASection } from '@/components/landing/cta-section'
@@ -15,6 +16,7 @@ export default function HomePage() {
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />
+        <NasaCard />
         <FeaturesSection />
         <TechnologiesSection />
         <CTASection />
