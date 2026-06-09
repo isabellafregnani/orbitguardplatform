@@ -15,7 +15,7 @@ export default function SpaceAlerts() {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-    const API_URL = "https://orbitguardplatform.onrender.com/api/nasa/notifications";
+    const API_URL = `https://api.nasa.gov/DONKI/notifications?api_key=${process.env.NEXT_PUBLIC_NASA_API_KEY}`;
 
     async function fetchSpaceData() {
     try {
