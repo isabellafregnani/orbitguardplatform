@@ -1,0 +1,77 @@
+[1mdiff --git a/app/alerts/alerts.tsx b/app/alerts/alerts.tsx[m
+[1mnew file mode 100644[m
+[1mindex 0000000..4723191[m
+[1m--- /dev/null[m
+[1m+++ b/app/alerts/alerts.tsx[m
+[36m@@ -0,0 +1,57 @@[m
+[32m+[m[32m"use client";[m[41m [m
+[32m+[m
+[32m+[m[32mimport { useEffect, useState } from 'react';[m
+[32m+[m
+[32m+[m[32minterface NasaNotification {[m
+[32m+[m[32m    messageId: string;[m
+[32m+[m[32m    messageType: string;[m
+[32m+[m[32m    messageIssueTime: string;[m
+[32m+[m[32m    messageURL: string;[m
+[32m+[m[32m    messageBody: string;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mexport default function SpaceAlerts() {[m
+[32m+[m[32m    const [notifications, setNotifications] = useState<NasaNotification[]>([]);[m
+[32m+[m[32m    const [loading, setLoading] = useState<boolean>(true);[m
+[32m+[m
+[32m+[m[32m    useEffect(() => {[m
+[32m+[m[32m    const API_URL = "https://orbitguardplatform.onrender.com/api/nasa/notifications";[m
+[32m+[m
+[32m+[m[32m    async function fetchSpaceData() {[m
+[32m+[m[32m    try {[m
+[32m+[m[32m        const response = await fetch(API_URL);[m
+[32m+[m[32m        if (!response.ok) {[m
+[32m+[m[32m        throw new Error("Erro ao carregar os dados do servidor.");[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m        // 3. Tipando a resposta do JSON[m
+[32m+[m[32m        const data: NasaNotification[] = await response.json();[m
+[32m+[m[32m        setNotifications(data);[m[41m [m
+[32m+[m[32m        } catch (error) {[m
+[32m+[m[32m        console.error("Erro na conexão com o back-end:", error);[m
+[32m+[m[32m        } finally {[m
+[32m+[m[32m        setLoading(false);[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    fetchSpaceData();[m
+[32m+[m[32m    }, []);[m
+[32m+[m
+[32m+[m[32m    if (loading) return <p>Carregando alertas espaciais da NASA...</p>;[m
+[32m+[m
+[32m+[m[32m    return ([m
+[32m+[m[32m    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>[m
+[32m+[m[32m        <h2>🌌 Alertas Cósmicos Recentes</h2>[m
+[32m+[m[32m        <div className="grid">[m
+[32m+[m[32m        {notifications.map((item) => ([m
+[32m+[m[32m            <div key={item.messageId} style={{ border: '1px solid #ccc', margin: '10px 0', padding: '15px', borderRadius: '8px' }}>[m
+[32m+[m[32m            <h3>Tipo: {item.messageType}</h3>[m
+[32m+[m[32m            <p><strong>Data de Emissão:</strong> {new Date(item.messageIssueTime).toLocaleString()}</p>[m
+[32m+[m[32m            <p>{item.messageBody}</p>[m
+[32m+[m[32m            <a href={item.messageURL} target="_blank" rel="noreferrer">Ver relatório oficial da NASA</a>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m        ))}[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m    );[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/app/dashboard/alerts/page.tsx b/app/dashboard/alerts/page.tsx[m
+[1mindex 5ad3f69..20995e1 100644[m
+[1m--- a/app/dashboard/alerts/page.tsx[m
+[1m+++ b/app/dashboard/alerts/page.tsx[m
+[36m@@ -113,7 +113,7 @@[m [mconst allAlerts: Alert[] = [[m
+     status: 'resolved',[m
+     title: 'Atualização de Catálogo',[m
+     description: 'Novos 47 objetos adicionados ao catálogo de rastreamento.',[m
+[31m-    time: '8 horas atrás',[m
+[32m+[m[32m    time: '4 horas atrás',[m
+     object: 'Sistema',[m
+     objectId: 'SYS-001',[m
+   },[m
