@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
   User, 
@@ -20,11 +20,24 @@ const tabs = [
   { id: 'language', label: 'Idioma', icon: Globe },
 ]
 
+const PROFILE_NAME_STORAGE_KEY = 'orbitguard:profileName'
+const DEFAULT_PROFILE_NAME = 'Operador OrbitGuard'
+
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState('profile')
   const [saved, setSaved] = useState(false)
+  const [profileName, setProfileName] = useState(DEFAULT_PROFILE_NAME)
+
+  useEffect(() => {
+    const savedName = localStorage.getItem(PROFILE_NAME_STORAGE_KEY)
+
+    if (savedName) {
+      setProfileName(savedName)
+    }
+  }, [])
 
   const handleSave = () => {
+    localStorage.setItem(PROFILE_NAME_STORAGE_KEY, profileName.trim() || DEFAULT_PROFILE_NAME)
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }
@@ -87,7 +100,8 @@ export default function SettingsPage() {
                     <label className="block text-sm font-medium text-foreground mb-2">Nome</label>
                     <input
                       type="text"
-                      defaultValue="Operador OrbitGuard"
+                      value={profileName}
+                      onChange={(e) => setProfileName(e.target.value)}
                       className="w-full px-4 py-2.5 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:border-primary"
                     />
                   </div>

@@ -12,10 +12,22 @@ interface NasaNotification {
   messageBody: string
 }
 
+const PROFILE_NAME_STORAGE_KEY = 'orbitguard:profileName'
+const DEFAULT_PROFILE_NAME = 'Operador OrbitGuard'
+
 export function DashboardNavbar() {
   const [searchQuery, setSearchQuery] = useState('')
   const [notifications, setNotifications] = useState<NasaNotification[]>([])
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
+  const [profileName, setProfileName] = useState(DEFAULT_PROFILE_NAME)
+
+  useEffect(() => {
+    const savedName = localStorage.getItem(PROFILE_NAME_STORAGE_KEY)
+
+    if (savedName) {
+      setProfileName(savedName)
+    }
+  }, [])
 
   useEffect(() => {
     const API_URL = `https://api.nasa.gov/DONKI/notifications?api_key=${process.env.NEXT_PUBLIC_NASA_API_KEY}`
@@ -135,6 +147,9 @@ export function DashboardNavbar() {
             <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
               <User className="w-4 h-4 text-white" />
             </div>
+            <span className="hidden max-w-40 truncate text-sm font-medium text-foreground sm:block">
+              {profileName}
+            </span>
           </button>
         </div>
       </div>
