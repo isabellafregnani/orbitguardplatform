@@ -72,7 +72,7 @@ export default function DashboardPage() {
               Atualização em tempo real
             </span>
           </div>
-          <div className="h-[320px] sm:h-[400px]">
+          <div className="min-h-[520px] sm:h-[400px] sm:min-h-0">
             <OrbitalMap />
           </div>
         </div>

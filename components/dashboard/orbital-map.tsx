@@ -41,8 +41,8 @@ export function OrbitalMap() {
     const updateSize = () => {
       const container = canvas.parentElement
       if (container) {
-        canvas.width = container.clientWidth
-        canvas.height = container.clientHeight
+        canvas.width = canvas.clientWidth
+        canvas.height = canvas.clientHeight
       }
     }
     
@@ -181,10 +181,10 @@ export function OrbitalMap() {
   }, [selectedObject, zoom])
 
   return (
-    <div className="relative h-full w-full min-h-[400px]">
+    <div className="relative flex h-full min-h-[520px] w-full flex-col sm:block sm:min-h-[400px]">
       <canvas
         ref={canvasRef}
-        className="w-full h-full"
+        className="h-[360px] w-full sm:h-full"
       />
 
       {/* Controls */}
@@ -219,7 +219,7 @@ export function OrbitalMap() {
       </div>
 
       {/* Legend */}
-      <div className="absolute bottom-4 left-4 glass-card rounded-lg p-3">
+      <div className="mt-4 glass-card rounded-lg p-3 sm:absolute sm:bottom-4 sm:left-4 sm:mt-0">
         <div className="text-xs font-medium text-foreground mb-2">Legenda</div>
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center gap-2">
