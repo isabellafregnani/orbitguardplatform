@@ -8,7 +8,7 @@ import { DebrisChart } from '@/components/dashboard/debris-chart'
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-6">
+    <div className="w-full min-w-0 space-y-6 overflow-x-hidden">
       {/* Header */}
       <div>
         <h1 className="font-display text-2xl font-bold text-foreground">
@@ -20,7 +20,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Objetos Monitorados"
           value="34,521"
@@ -60,10 +60,10 @@ export default function DashboardPage() {
       </div>
 
       {/* Main Content */}
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid w-full min-w-0 gap-6 lg:grid-cols-3">
         {/* Orbital Map */}
-        <div className="lg:col-span-2 glass-card rounded-xl p-4">
-          <div className="flex items-center justify-between mb-4">
+        <div className="min-w-0 glass-card rounded-xl p-4 lg:col-span-2">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="font-display text-lg font-semibold text-foreground">
               Mapa Orbital
             </h2>
@@ -72,13 +72,13 @@ export default function DashboardPage() {
               Atualização em tempo real
             </span>
           </div>
-          <div className="h-[400px]">
+          <div className="h-[320px] sm:h-[400px]">
             <OrbitalMap />
           </div>
         </div>
 
         {/* Alerts */}
-        <div className="glass-card rounded-xl p-4">
+        <div className="min-w-0 glass-card rounded-xl p-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-display text-lg font-semibold text-foreground">
               Alertas Recentes
@@ -92,10 +92,10 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid w-full min-w-0 gap-6 lg:grid-cols-2">
         {/* Debris Evolution */}
-        <div className="glass-card rounded-xl p-4">
-          <div className="flex items-center justify-between mb-4">
+        <div className="min-w-0 glass-card rounded-xl p-4">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="font-display text-lg font-semibold text-foreground">
               Evolução de Detritos
             </h2>
@@ -109,28 +109,28 @@ export default function DashboardPage() {
         </div>
 
         {/* Quick Stats */}
-        <div className="glass-card rounded-xl p-4">
+        <div className="min-w-0 glass-card rounded-xl p-4">
           <h2 className="font-display text-lg font-semibold text-foreground mb-4">
             Resumo do Sistema
           </h2>
           <div className="space-y-4">
-            <div className="flex items-center justify-between py-3 border-b border-border/50">
+            <div className="flex flex-col gap-1 py-3 border-b border-border/50 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-muted-foreground">Última colisão detectada</span>
               <span className="text-foreground font-medium">Há 47 dias</span>
             </div>
-            <div className="flex items-center justify-between py-3 border-b border-border/50">
+            <div className="flex flex-col gap-1 py-3 border-b border-border/50 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-muted-foreground">Manobras evasivas (mês)</span>
               <span className="text-foreground font-medium">23</span>
             </div>
-            <div className="flex items-center justify-between py-3 border-b border-border/50">
+            <div className="flex flex-col gap-1 py-3 border-b border-border/50 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-muted-foreground">Precisão de previsão</span>
               <span className="text-success font-medium">99.7%</span>
             </div>
-            <div className="flex items-center justify-between py-3 border-b border-border/50">
+            <div className="flex flex-col gap-1 py-3 border-b border-border/50 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-muted-foreground">Uptime do sistema</span>
               <span className="text-success font-medium">99.99%</span>
             </div>
-            <div className="flex items-center justify-between py-3">
+            <div className="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between">
               <span className="text-muted-foreground">Próxima janela crítica</span>
               <span className="text-warning font-medium">Em 4h 23min</span>
             </div>

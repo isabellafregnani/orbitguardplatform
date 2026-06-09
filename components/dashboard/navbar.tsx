@@ -41,10 +41,10 @@ export function DashboardNavbar() {
   const latestNotifications = notifications.slice(0, 3)
 
   return (
-    <header className="h-16 border-b border-border bg-background-secondary/80 backdrop-blur-sm sticky top-0 z-30">
-      <div className="flex items-center justify-between h-full px-6">
+    <header className="min-h-16 border-b border-border bg-background-secondary/80 backdrop-blur-sm sticky top-0 z-30">
+      <div className="flex h-full min-w-0 flex-col gap-3 px-4 py-3 sm:px-6 md:h-16 md:flex-row md:items-center md:justify-between md:py-0">
         {/* Search */}
-        <div className="flex-1 max-w-md">
+        <div className="w-full min-w-0 md:max-w-md md:flex-1">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <input
@@ -58,7 +58,7 @@ export function DashboardNavbar() {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center justify-end gap-2 sm:gap-3">
           {/* System Status */}
           <div className="hidden md:flex items-center gap-2 px-3 py-1.5 glass-card rounded-lg">
             <Activity className="w-4 h-4 text-success" />
@@ -96,7 +96,7 @@ export function DashboardNavbar() {
                   {latestNotifications.length > 0 ? (
                     latestNotifications.map((item) => (
                       <a
-                        key={item.messageId}
+                        key={item.messageId || item.messageURL || item.messageIssueTime}
                         href={item.messageURL}
                         target="_blank"
                         rel="noreferrer"

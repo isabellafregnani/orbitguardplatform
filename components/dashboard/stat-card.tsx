@@ -28,9 +28,9 @@ export function StatCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="glass-card rounded-xl p-5 hover:border-primary/30 transition-all duration-300"
+      className="w-full min-w-0 glass-card rounded-xl p-4 transition-all duration-300 hover:border-primary/30 sm:p-5"
     >
-      <div className="flex items-start justify-between mb-4">
+      <div className="mb-4 flex min-w-0 items-start justify-between gap-3">
         <div className={cn(
           "w-10 h-10 rounded-lg flex items-center justify-center",
           iconColor.includes('primary') ? 'bg-primary/10' :
@@ -53,11 +53,11 @@ export function StatCard({
           </span>
         )}
       </div>
-      <div>
+      <div className="min-w-0">
         <div className="font-display text-2xl font-bold text-foreground mb-1">
           {value}
         </div>
-        <div className="text-sm text-muted-foreground">{title}</div>
+        <div className="break-words text-sm text-muted-foreground">{title}</div>
       </div>
     </motion.div>
   )
