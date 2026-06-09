@@ -113,7 +113,7 @@ const allAlerts: Alert[] = [
     status: 'resolved',
     title: 'Atualização de Catálogo',
     description: 'Novos 47 objetos adicionados ao catálogo de rastreamento.',
-    time: '8 horas atrás',
+    time: '4 horas atrás',
     object: 'Sistema',
     objectId: 'SYS-001',
   },
